@@ -1,4 +1,3 @@
-# module.nix
 {
   config,
   lib,
@@ -198,4 +197,4 @@ in
 
       users.groups.surrealdb = {};
     };
-  } # module.nix
+  } 

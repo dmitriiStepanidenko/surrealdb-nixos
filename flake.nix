@@ -15,17 +15,15 @@
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
         manifests = import ./manifests;
+        mkDerivationSet = pkgs.callPackage ./lib/mkDerivation.nix {};
       in {
         packages = let
-          versionedPackages =
-            (pkgs.callPackage ./lib/todo-backend-bin.nix {inherit manifests;}).packages;
+          versionedPackages = pkgs.lib.mapAttrs (version: manifest:
+            mkDerivationSet {inherit (manifest) version hash;} {})
+          manifests;
         in
           versionedPackages
           // {
-            #default = self.packages.${system}.todo-backend.stable;
-            #default = self.packages.${system}.todo-backend.packages.stable;
-            #todo-backend = versionedPackages.stable;
-            #pkgs.lib.mapAttrs (version: deriv: { "${version}"= deriv; }) versionedPackages;
           };
       }
     )
