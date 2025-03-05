@@ -7,7 +7,7 @@ Add this input to flake.nix:
 ```nix
 {
   inputs = {
-    surrealdb.url = "path:/home/dmitrii/shared/tmp/surrealdb-nixos";
+    surrealdb.url = "github:dmitriiStepanidenko/surrealdb-nixos";
     # ...
   };
 }
@@ -32,3 +32,9 @@ Somewhere in your configuration add:
 ```
 
 All available versions are defined in ./manifests/default.nix. Note that versions can be referenced as either "x.y.z" or "x_y_z" - both formats refer to the same version. The underscore format is used for CLI commands like nix build .#x_y_z.
+
+
+# Todo
+- [] Currently this library only supports services with RocksDB backend for SurrealDB
+- [] Add GitHub Actions to automatically update to new versions when released
+
