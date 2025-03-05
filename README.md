@@ -35,6 +35,6 @@ All available versions are defined in ./manifests/default.nix. Note that version
 
 
 # Todo
-- [] Currently this library only supports services with RocksDB backend for SurrealDB
-- [] Add GitHub Actions to automatically update to new versions when released
+- [ ] Currently this library only supports services with RocksDB backend for SurrealDB
+- [ ] Add GitHub Actions to automatically update to new versions when released
 
