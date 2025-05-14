@@ -16,7 +16,7 @@
       src = fetchzip {
         inherit version hash;
         url = "https://github.com/surrealdb/surrealdb/releases/download/v${version}/surreal-v${version}.linux-amd64.tgz";
-        name = "todo-backend.tgz";
+        name = "surrealdb.tgz";
       };
 
       nativeBuildInputs = [autoPatchelfHook];
