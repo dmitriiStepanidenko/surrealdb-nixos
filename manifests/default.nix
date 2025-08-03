@@ -11,6 +11,10 @@
   "2_2_4" = import ./binary/2.2.4.nix;
   "2.2.5" = import ./binary/2.2.5.nix;
   "2_2_5" = import ./binary/2.2.5.nix;
+  "2.2.6" = import ./binary/2.2.6.nix;
+  "2_2_6" = import ./binary/2.2.6.nix;
+  "2.2.7" = import ./binary/2.2.7.nix;
+  "2_2_7" = import ./binary/2.2.7.nix;
 
   "2.3.0" = import ./binary/2.3.0.nix;
   "2_3_0" = import ./binary/2.3.0.nix;
@@ -24,6 +28,10 @@
   "2_3_4" = import ./binary/2.3.4.nix;
   "2.3.5" = import ./binary/2.3.5.nix;
   "2_3_5" = import ./binary/2.3.5.nix;
+  "2.3.6" = import ./binary/2.3.6.nix;
+  "2_3_6" = import ./binary/2.3.6.nix;
+  "2.3.7" = import ./binary/2.3.7.nix;
+  "2_3_7" = import ./binary/2.3.7.nix;
 
   "3.0.0-alpha.1" = import ./binary/3.0.0-alpha.1.nix;
   "3_0_0-alpha_1" = import ./binary/3.0.0-alpha.1.nix;
