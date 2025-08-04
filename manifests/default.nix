@@ -47,6 +47,6 @@
   "3_0_0-alpha_6" = import ./binary/3.0.0-alpha.6.nix;
   "3.0.0-alpha.7" = import ./binary/3.0.0-alpha.7.nix;
   "3_0_0-alpha_7" = import ./binary/3.0.0-alpha.7.nix;
-  latest = import ./binary/2.3.5.nix;
+  latest = import ./binary/2.3.7.nix;
   latest_unstable = import ./binary/3.0.0-alpha.7.nix;
 }
