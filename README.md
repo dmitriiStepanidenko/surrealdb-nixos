@@ -2,9 +2,9 @@
 
 SurrealDB binary packages for Flake-enabled NixOS with the ability to choose specific versions.
 
-Current latest version: 2.3.7
+Current latest version: 2.3.9
 
-Current latest_unstable version: 3.0.0-alpha.7
+Current latest_unstable version: 3.0.0-alpha.8
 
 Supports versions from 2.2.0
 
