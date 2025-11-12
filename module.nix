@@ -23,9 +23,17 @@ in {
     };
 
     dataDir = mkOption {
-      type = types.str;
-      default = "/var/lib/surrealdb";
-      description = "Directory to store database files";
+      type = types.nullOr types.str;
+      default = null;
+      #default = "/var/lib/surrealdb";
+      description = "Directory to store database files (for RocksDB backend)";
+    };
+
+    tikvAddr = mkOption {
+      type = types.nullOr types.str;
+      default = null;
+      example = "127.0.0.1:2379";
+      description = "TiKV server address (for TiKV backend)";
     };
 
     log = mkOption {
@@ -134,6 +142,13 @@ in {
   };
 
   config = mkIf cfg.enable {
+    assertions = [
+      {
+        assertion = (cfg.dataDir != null) != (cfg.tikvAddr != null);
+        message = "Exactly one of services.surrealdb-bin.dataDir or services.surrealdb-bin.tikvAddr must be set";
+      }
+    ];
+
     systemd.services.surrealdb = {
       description = "SurrealDB Database Service";
       wantedBy = ["multi-user.target"];
@@ -144,16 +159,19 @@ in {
         User = "surrealdb";
         Group = "surrealdb";
 
-        StateDirectory = "surrealdb";
+        # Only set StateDirectory if using dataDir (RocksDB backend)
+        StateDirectory = mkIf (cfg.dataDir != null) "surrealdb";
         StateDirectoryMode = "0700";
-        WorkingDirectory = cfg.dataDir;
+        WorkingDirectory = if cfg.dataDir != null then cfg.dataDir else "/var/lib/surrealdb";
       };
+
       script = let
+        storage = if cfg.dataDir != null then "rocksdb://${cfg.dataDir}" else "tikv://${cfg.tikvAddr}";
         args =
           [
             "start"
             "--log ${cfg.log}"
-            "rocksdb://${cfg.dataDir}"
+            storage
           ]
           ++ (optionals (cfg.auth.passwordFile != null) ["--password" "\"$(cat ${cfg.auth.passwordFile} )\""])
           ++ (optionals cfg.strict ["--strict"])
@@ -180,7 +198,7 @@ in {
     users.users.surrealdb = {
       isSystemUser = true;
       group = "surrealdb";
-      home = cfg.dataDir;
+      home = if cfg.dataDir != null then cfg.dataDir else "/var/lib/surrealdb";
       createHome = true;
       description = "SurrealDB service user";
     };

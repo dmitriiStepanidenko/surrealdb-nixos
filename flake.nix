@@ -6,7 +6,7 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = {
+  outputs = inputs @ {
     self,
     nixpkgs,
     flake-utils,
@@ -30,8 +30,24 @@
     // {
       # NixOS module that can be imported in configuration.nix
       nixosModules.default = import ./module.nix;
+      nixosModules.surrealdb = import ./module.nix;
 
       # For backward compatibility
       nixosModule = self.nixosModules.default;
+
+      nixosConfigurations = let
+        system = "x86_64-linux";
+      in {
+        vm = nixpkgs.lib.makeOverridable inputs.nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            self.nixosModules.surrealdb
+            ./test-service.nix
+          ];
+        };
+      };
     };
 }
