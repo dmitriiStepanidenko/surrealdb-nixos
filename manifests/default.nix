@@ -47,6 +47,9 @@
   "2_3" = import ./binary/2.3.10.nix;
   "2.3" = import ./binary/2.3.10.nix;
 
+  "2.4.0" = import ./binary/2.4.0.nix;
+  "2_4_0" = import ./binary/2.4.0.nix;
+
   "3.0.0-alpha.1" = import ./binary/3.0.0-alpha.1.nix;
   "3_0_0-alpha_1" = import ./binary/3.0.0-alpha.1.nix;
   "3.0.0-alpha.2" = import ./binary/3.0.0-alpha.2.nix;
@@ -66,6 +69,6 @@
   "3.0.0-alpha.9" = import ./binary/3.0.0-alpha.9.nix;
   "3_0_0-alpha_9" = import ./binary/3.0.0-alpha.9.nix;
 
-  latest = import ./binary/2.3.10.nix;
+  latest = import ./binary/2.4.0.nix;
   latest_unstable = import ./binary/3.0.0-alpha.9.nix;
 }

@@ -155,9 +155,14 @@ in {
       after = ["network.target"];
 
       serviceConfig = {
-        Restart = "on-failure";
+        Restart = "always";
+        RestartSec = "1s";
         User = "surrealdb";
         Group = "surrealdb";
+
+        # Remove restart limits to allow infinite retries
+        StartLimitIntervalSec = 0;
+
 
         # Only set StateDirectory if using dataDir (RocksDB backend)
         StateDirectory = mkIf (cfg.dataDir != null) "surrealdb";
