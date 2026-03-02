@@ -67,6 +67,8 @@
   "2_6" = import ./binary/2.6.2.nix;
   "2.6" = import ./binary/2.6.2.nix;
 
+  "2" = import ./binary/2.6.2.nix;
+
   "3.0.0-alpha.1" = import ./binary/3.0.0-alpha.1.nix;
   "3_0_0-alpha_1" = import ./binary/3.0.0-alpha.1.nix;
   "3.0.0-alpha.2" = import ./binary/3.0.0-alpha.2.nix;
