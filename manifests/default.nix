@@ -105,6 +105,11 @@
   "3.0.2" = import ./binary/3.0.2.nix;
   "3_0_2" = import ./binary/3.0.2.nix;
 
-  latest = import ./binary/3.0.2.nix;
+  "3.0.3" = import ./binary/3.0.3.nix;
+  "3_0_3" = import ./binary/3.0.3.nix;
+
+  "3" = import ./binary/3.0.3.nix;
+
+  latest = import ./binary/3.0.3.nix;
   latest_unstable = import ./binary/3.0.0-beta.2.nix;
 }
