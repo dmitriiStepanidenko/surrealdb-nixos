@@ -187,9 +187,11 @@
   "3_2_3" = import ./binary/3.2.3.nix;
   "3.2.4" = import ./binary/3.2.4.nix;
   "3_2_4" = import ./binary/3.2.4.nix;
+  "3.2.5" = import ./binary/3.2.5.nix;
+  "3_2_5" = import ./binary/3.2.5.nix;
 
-  "3.2" = import ./binary/3.2.4.nix;
-  "3_2" = import ./binary/3.2.4.nix;
+  "3.2" = import ./binary/3.2.5.nix;
+  "3_2" = import ./binary/3.2.5.nix;
 
   "3.3.0-beta.1" = import ./binary/3.3.0-beta.1.nix;
   "3_3_0-beta_1" = import ./binary/3.3.0-beta.1.nix;
